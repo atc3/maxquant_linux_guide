@@ -1,0 +1,8 @@
+# sublime files
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+desktop.ini
+.DS_Store
+
