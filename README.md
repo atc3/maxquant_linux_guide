@@ -6,6 +6,22 @@ Read my blog post here: [http://atchen.me/research/2019/03/21/mq-linux.html](htt
 The goal of the `gen_mqpar.py` script is to create MaxQuant configuration files (`mqpar.xml` files) in a console environment without having to transfer one over or edit the XML manually. The example given has some hard-coded stuff and makes assumptions about your filesystem, so please follow the steps below to get started.
 
 1. Verify that [Mono](https://www.mono-project.com/download/stable/#download-lin) is installed.
+
+Note, If searching Bruker timsTOF data, you need `gcc` version 8.3+. Check the version with `gcc --version`. You can install gcc8 with these commands:
+
+```bash
+# For CentOS 7:
+
+yum install centos-release-scl
+yum install devtoolset-8
+scl enable devtoolset-8 -- bash
+
+# Enable the tools (put this into .bash_profile)
+source /opt/rh/devtoolset-8/enable
+```
+
+(Thanks to [@cscaife](https://github.com/cscaife) for identifying this step, and [https://stackoverflow.com/a/55876012](https://stackoverflow.com/a/55876012) for the install instructions)
+
 2. Create template `mqpar.xml` files – representing configurations for MaxQuant searches you routinely run on your experiments. I put a bunch of my templates in a folder, `templates/` for easy access. 
     - I recommend generating these first in the MaxQuant GUI, as it's easier and you can verify that the configuration file is valid before moving it to your Linux instance.
     - Don't worry about the raw files, folder paths, or FASTA file paths in the template file – they will be replaced by the script
